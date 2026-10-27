@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychology - Class 4: Historical Antecedents II</title>
+    <style>
+        :root {
+            --primary-blue: #1269A8;
+            --bright-yellow: #F7D615;
+            --gray-green: #54887D;
+            --light-blue: #88B5C7;
+            --olive-green: #A6B046;
+            --board-bg: #F2F5E9;
+            --text-dark: #2C3E50;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--board-bg);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+
+        /* Header Layout */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left img {
+            height: 55px;
+            background: var(--white);
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .header-info h1 {
+            font-size: 1.4rem;
+            color: var(--bright-yellow);
+        }
+
+        .header-info p {
+            font-size: 0.85rem;
+            color: var(--white);
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .fullscreen-btn {
+            background-color: var(--bright-yellow);
+            color: var(--primary-blue);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: #e0c110;
+            transform: scale(1.03);
+        }
+
+        /* Institutional Framework Bar */
+        .institutional-bar {
+            background-color: var(--white);
+            border-left: 5px solid var(--olive-green);
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .inst-box strong {
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .badge {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        /* Tab Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 160px;
+            padding: 12px 10px;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            background-color: var(--gray-green);
+            color: var(--white);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-blue);
+            color: var(--bright-yellow);
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Content Container */
+        .content-area {
+            background-color: var(--white);
+            border-radius: 0 0 12px 12px;
+            padding: 25px;
+            min-height: 400px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            flex-grow: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styling Elements */
+        h2 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bright-yellow);
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .time-tag {
+            background-color: var(--gray-green);
+            color: var(--white);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 15px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .card {
+            background-color: var(--board-bg);
+            border: 1px solid var(--light-blue);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        /* Accordion Collapsible Solvers */
+        .collapsible {
+            background-color: var(--gray-green);
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .active-collapsible, .collapsible:hover {
+            background-color: var(--primary-blue);
+        }
+
+        .collapsible-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #E8EFEA;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .collapsible-content p {
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Table */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .comp-table th, .comp-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .comp-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .comp-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Interactive Quiz / Station Component */
+        .trivia-box {
+            background: #eef6fa;
+            border: 2px dashed var(--primary-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: white;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .option-btn:hover {
+            background: var(--bright-yellow);
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Rubric Table */
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .rubric-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .rubric-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .interactive-check {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .ticket-input {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--gray-green);
+            margin-top: 10px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-left">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" alt="Colegio Montano Logo">
+            <div class="header-info">
+                <h1>Psychology — Class 4: Historical Antecedents II</h1>
+                <p><strong>Grade:</strong> 4th High School | <strong>Unit:</strong> 1 | <strong>Plan No:</strong> 4 | <strong>Date:</strong> Feb 1st - 5th | <strong>Teacher:</strong> Elysa López</p>
+            </div>
+        </div>
+        <div class="header-controls">
+            <button class="fullscreen-btn" onclick="toggleFullScreen()">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zM10 .5a.5.5 0 0 0 0 1h3.5v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5h-4zM1.5 15a.5.5 0 0 0 .5-.5V11H2a.5.5 0 0 0 0-1H.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h4zM15 11.5a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 .5-.5v-4z"/>
+                </svg>
+                Fullscreen
+            </button>
+        </div>
+    </header>
+
+    <!-- Institutional Framework Banner -->
+    <section class="institutional-bar">
+        <div class="inst-box">
+            <strong>CNB Competence & Learning Outcome:</strong>
+            Explains the emergence of early psychological schools of thought, comparing their key proponents, core theories, and subject of study.
+        </div>
+        <div class="inst-box">
+            <strong>Key Skills:</strong>
+            <span class="badge">Critical Analysis</span>
+            <span class="badge">Comparative Thinking</span>
+            <span class="badge">Teamwork</span>
+            <span class="badge">Synthesis</span>
+        </div>
+        <div class="inst-box">
+            <strong>Montano Habits:</strong>
+            <span class="badge">Begin with the End in Mind</span>
+            <span class="badge">Seek First to Understand</span>
+            <span class="badge">Synergize</span>
+        </div>
+    </section>
+
+    <!-- Interactive Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'tab1')">I) Timeline Retrieval (10m)</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab2')">II) Early Schools (20m)</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab3')">III) Comparative Matrix (20m)</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab4')">IV) Discussion & Self-Assessment (10m)</button>
+    </nav>
+
+    <!-- Main Interactive Display Container -->
+    <main class="content-area">
+
+        <!-- TAB I: Warm-Up Hook & Timeline Retrieval -->
+        <div id="tab1" class="tab-content active">
+            <h2>
+                <span>Phase I: Timeline Retrieval & Activation</span>
+                <span class="time-tag">Time: 10 Minutes</span>
+            </h2>
+
+            <div class="card">
+                <h3>Bridging 1879 to Early Schools</h3>
+                <p style="font-size: 1.1rem; color: var(--primary-blue); font-weight: bold; margin: 10px 0;">
+                    "Once Wundt established the first laboratory in 1879, how did psychologists disagree on what the mind should actually be studied for?"
+                </p>
+                <p><strong>Timeline Recall Exercise:</strong> In pairs, trace the transition from philosophy (Descartes/Locke) to Wundt's experimental lab. Predict what debate followed Wundt's method of introspection.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Quick Recall Challenge</h3>
+                    <p>What was Wundt's primary method for analyzing conscious experience, and why did later psychologists criticize it?</p>
+                    <button class="collapsible">Reveal Answer</button>
+                    <div class="collapsible-content">
+                        <p><strong>Introspection:</strong> Self-reporting conscious thoughts. Criticized for being too subjective, unreliable, and unobservable.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Shift in Perspective</h3>
+                    <p>How did disagreeing over introspection lead to entirely new psychological schools (Behaviorism, Psychoanalysis, Gestalt)?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB II: Early Schools Overview -->
+        <div id="tab2" class="tab-content">
+            <h2>
+                <span>Phase II: The First Schools of Psychology</span>
+                <span class="time-tag">Time: 20 Minutes</span>
+            </h2>
+
+            <p style="margin-bottom: 15px;">Explore the 5 foundational schools of thought that shaped modern psychology:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1. Structuralism</h3>
+                    <p><strong>Key Figure:</strong> Edward Titchener (and Wilhelm Wundt)</p>
+                    <p><strong>Focus:</strong> Breaking conscious experience down into its basic structure/elements using introspection.</p>
+                </div>
+
+                <div class="card">
+                    <h3>2. Functionalism</h3>
+                    <p><strong>Key Figure:</strong> William James</p>
+                    <p><strong>Focus:</strong> How mental processes function to help organisms adapt to their environment (influenced by Darwin).</p>
+                </div>
+
+                <div class="card">
+                    <h3>3. Psychoanalysis</h3>
+                    <p><strong>Key Figure:</strong> Sigmund Freud</p>
+                    <p><strong>Focus:</strong> Unconscious drives, early childhood experiences, and repressed conflicts shaping behavior.</p>
+                </div>
+
+                <div class="card">
+                    <h3>4. Behaviorism</h3>
+                    <p><strong>Key Figures:</strong> John B. Watson, B.F. Skinner</p>
+                    <p><strong>Focus:</strong> Rejection of consciousness; study of strictly observable behavior and environmental learning.</p>
+                </div>
+
+                <div class="card" style="grid-column: span 1 / -1;">
+                    <h3>5. Gestalt Psychology</h3>
+                    <p><strong>Key Figures:</strong> Max Wertheimer, Wolfgang Köhler</p>
+                    <p><strong>Focus:</strong> Perception and mind as a unified whole. <em>"The whole is greater than the sum of its parts."</em></p>
+                </div>
+            </div>
+
+            <div class="trivia-box" style="margin-top: 15px;">
+                <h3>🧠 Quick Check: Which School?</h3>
+                <p>"Psychology should strictly study observable actions and ignore internal mental states." Which school fits this statement?</p>
+                <button class="option-btn" onclick="checkAnswer(this, false)">A) Structuralism</button>
+                <button class="option-btn" onclick="checkAnswer(this, true)">B) Behaviorism</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">C) Psychoanalysis</button>
+                <div id="trivia-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- TAB III: Collaborative Work - Comparative Matrix -->
+        <div id="tab3" class="tab-content">
+            <h2>
+                <span>Phase III: Cooperative Comparative Matrix</span>
+                <span class="time-tag">Time: 20 Minutes</span>
+            </h2>
+
+            <p style="margin-bottom: 15px;"><strong>Group Activity (Teams of 3-4):</strong> Roles: Researcher, Matrix Scribe, Presenter. Compare the five early schools across key dimensions.</p>
+
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>School of Thought</th>
+                        <th>Key Author(s)</th>
+                        <th>Central Idea / Focus</th>
+                        <th>Subject of Study</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Structuralism</strong></td>
+                        <td>Edward Titchener, W. Wundt</td>
+                        <td>Analyze mind into basic elements.</td>
+                        <td>Conscious experience (Introspection)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Functionalism</strong></td>
+                        <td>William James</td>
+                        <td>Purpose/function of mental processes.</td>
+                        <td>Adaptive mental and behavioral processes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Psychoanalysis</strong></td>
+                        <td>Sigmund Freud</td>
+                        <td>Unconscious mind drives behavior.</td>
+                        <td>Unconscious motives & early childhood</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Behaviorism</strong></td>
+                        <td>John B. Watson, B.F. Skinner</td>
+                        <td>Only measurable behavior counts.</td>
+                        <td>Observable behavior & environment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gestalt</strong></td>
+                        <td>Max Wertheimer</td>
+                        <td>Organized wholes in perception.</td>
+                        <td>Perception and unified consciousness</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card" style="margin-top: 15px;">
+                <h3>Team Challenge Prompt</h3>
+                <p><strong>Case Analysis:</strong> Imagine a student is struggling with fear of public speaking. How would a <em>Behaviorist</em> vs. a <em>Psychoanalyst</em> explain the root cause of this fear differently?</p>
+                <button class="collapsible">Click for Comparative Hint</button>
+                <div class="collapsible-content">
+                    <p><strong>Behaviorist:</strong> Fear was learned through past conditioning/negative experiences.<br><strong>Psychoanalyst:</strong> Fear stems from an unconscious conflict or unresolved childhood event.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB IV: Plenary Discussion & Self-Assessment -->
+        <div id="tab4" class="tab-content">
+            <h2>
+                <span>Phase IV: Plenary Discussion & Self-Assessment</span>
+                <span class="time-tag">Time: 10 Minutes</span>
+            </h2>
+
+            <div class="card">
+                <h3>💬 Plenary Focus (5 mins)</h3>
+                <p style="font-size: 1.1rem; color: var(--primary-blue); font-weight: bold; margin-bottom: 8px;">
+                    "How does changing the psychological school of thought alter how we explain the exact same behavior?"
+                </p>
+                <p>Group leaders share 1-minute insights on how different perspectives offer unique lenses on human behavior.</p>
+            </div>
+
+            <!-- Assessment Rubric -->
+            <h3 style="margin-top: 20px; color: var(--primary-blue);">Group Activity Rubric (Matrix Analysis)</h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Proficient (3 pts)</th>
+                        <th>Developing (2 pts)</th>
+                        <th>Needs Improvement (1 pt)</th>
+                        <th>Score Check</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>School Differentiation</strong></td>
+                        <td>Accurately matches all key figures, core concepts, and study objects.</td>
+                        <td>Minor confusion in 1-2 schools of thought.</td>
+                        <td>Confuses key concepts across schools.</td>
+                        <td><input type="checkbox" class="interactive-check"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Behavioral Explanation</strong></td>
+                        <td>Clearly demonstrates how different schools explain the same behavior differently.</td>
+                        <td>Provides basic explanation with minor inconsistencies.</td>
+                        <td>Fails to apply school perspectives to a behavior.</td>
+                        <td><input type="checkbox" class="interactive-check"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Collaboration (Synergy)</strong></td>
+                        <td>Active, equal participation with assigned team roles.</td>
+                        <td>Unequal participation among team members.</td>
+                        <td>Single member dominated task.</td>
+                        <td><input type="checkbox" class="interactive-check"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Individual Self-Assessment / Exit Ticket -->
+            <div class="card" style="margin-top: 20px; border-left: 5px solid var(--bright-yellow);">
+                <h3>🎟️ Individual Self-Assessment & Exit Ticket (5 mins)</h3>
+                <p>Which early school of psychology do you find most convincing for explaining human behavior, and why? Synthesize in 2-3 sentences.</p>
+                <textarea class="ticket-input" placeholder="I believe the most convincing school is... because..."></textarea>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Tab switching logic
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Fullscreen toggle function
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Collapsible Accordion logic
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active-collapsible");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+
+        // Quiz response handler
+        function checkAnswer(btn, isCorrect) {
+            var feedbackDiv = document.getElementById("trivia-feedback");
+            if(isCorrect) {
+                feedbackDiv.style.color = "green";
+                feedbackDiv.textContent = "✓ Correct! Behaviorism (Watson, Skinner) strictly rejected internal mental states and focused only on observable behavior.";
+            } else {
+                feedbackDiv.style.color = "red";
+                feedbackDiv.textContent = "✗ Not quite. Structuralism and Psychoanalysis both focus on internal mental states (conscious and unconscious). Behaviorism focuses on observable actions.";
+            }
+        }
+    </script>
+</body>
+</html>
